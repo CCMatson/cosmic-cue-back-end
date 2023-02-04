@@ -17,7 +17,7 @@ try {
   }
 }
 
-const index = async ( req, res ) => {
+const index = async (req, res) => {
   try {
     const fortunes = await Fortune.find({})
       .populate('owner')
@@ -28,7 +28,7 @@ const index = async ( req, res ) => {
   }
 }
 
-const show = async ( req, res ) => {
+const show = async (req, res) => {
   try {
     const fortune = await Fortune.findById(req.params.id)
     .populate('owner')
@@ -38,9 +38,23 @@ const show = async ( req, res ) => {
   }
 }
 
+const update = async (req , res) => {
+  try {
+    const fortune = await Fortune.findByIdAndUpdate(
+        req.params.id, 
+        req.body,
+        { new: true }
+      ).populate('owner')
+      res.status(200).json(blog)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 
 export { 
   create ,
   index,
-  show
+  show,
+  update
 }
