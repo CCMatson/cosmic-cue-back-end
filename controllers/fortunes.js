@@ -57,7 +57,7 @@ const deleteFortune = async (req, res) => {
     const profile = await Profile.findById(req.user.profile)
     profile.fortunes.remove({ _id: req.params.id })
     await profile.save()
-    req.status(200).json(fortune)
+    res.status(200).json(fortune)
   } catch (error){
     res.status(500).json(error)
   }
