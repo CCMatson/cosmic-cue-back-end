@@ -11,7 +11,7 @@ const router = Router()
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
 router.post('/' , checkAuth, fortunesCtrl.create)
-router.get('/, checkAuth' , fortunesCtrl.index)
+router.get('/', checkAuth, fortunesCtrl.index)
 
 
 export { router }
