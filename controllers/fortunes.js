@@ -17,8 +17,19 @@ try {
   }
 }
 
+const index = async ( req, res ) => {
+  try {
+    const fortunes = await Fortune.find({})
+      .populate('owner')
+      .sort({ createAt : 'desc' })
+    res.status(200).json(fortunes)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 
 
 export { 
-  create 
+  create ,
+  index
 }
