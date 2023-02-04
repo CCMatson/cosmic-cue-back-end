@@ -28,8 +28,19 @@ const index = async ( req, res ) => {
   }
 }
 
+const show = async ( req, res ) => {
+  try {
+    const fortune = await Fortune.findById(req.params.id)
+    .populate('owner')
+    res.status(200).json(fortune)
+  } catch (error){
+    res.status(500).json(error)
+  }
+}
+
 
 export { 
   create ,
-  index
+  index,
+  show
 }

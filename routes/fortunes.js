@@ -12,6 +12,7 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/' , checkAuth, fortunesCtrl.create)
 router.get('/', checkAuth, fortunesCtrl.index)
+router.get('/:id', checkAuth, fortunesCtrl.show)
 
 
 export { router }
