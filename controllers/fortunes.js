@@ -51,10 +51,23 @@ const update = async (req , res) => {
   }
 }
 
+const deleteFortune = async (req, res) => {
+  try {
+    const fortune = await Fortune.findByIdAndDelete(req.params.id)
+    const profile = await Profile.findById(req.user.profile)
+    profile.fortunes.remove({ _id: req.params.id })
+    await profile.save()
+    req.status(200).json(fortune)
+  } catch (error){
+    res.status(500).json(error)
+  }
+
+}
 
 export { 
   create ,
   index,
   show,
-  update
+  update,
+  deleteFortune as delete,
 }

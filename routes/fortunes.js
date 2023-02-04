@@ -14,6 +14,7 @@ router.post('/' , checkAuth, fortunesCtrl.create)
 router.get('/', checkAuth, fortunesCtrl.index)
 router.get('/:id', checkAuth, fortunesCtrl.show)
 router.put('/:id', checkAuth, fortunesCtrl.update)
+router.delete('/:id' , checkAuth, fortunesCtrl.delete)
 
 
 export { router }
