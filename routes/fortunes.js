@@ -13,6 +13,7 @@ router.use(decodeUserFromToken)
 router.post('/' , checkAuth, fortunesCtrl.create)
 router.get('/', checkAuth, fortunesCtrl.index)
 router.get('/:id', checkAuth, fortunesCtrl.show)
+router.put('/:id', checkAuth, fortunesCtrl.update)
 
 
 export { router }
