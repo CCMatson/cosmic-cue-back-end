@@ -45,7 +45,7 @@ const update = async (req , res) => {
         req.body,
         { new: true }
       ).populate('owner')
-      res.status(200).json(blog)
+      res.status(200).json(fortune)
   } catch (error) {
     res.status(500).json(error)
   }
