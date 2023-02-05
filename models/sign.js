@@ -3,8 +3,14 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const signSchema = new Schema({
-  noun: String,
-  adjective: String,
+  noun: {
+    type: String,
+    required: true,
+  },
+  adjective: {
+    type: String,
+    required: true,
+  },
 },{
   timestamps: true,
 })
