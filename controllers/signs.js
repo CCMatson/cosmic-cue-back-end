@@ -11,8 +11,16 @@ const create = async (req,res) => {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const sign = await Sign.findById(req.params.id)
+    res.status(200).json(sign)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 
 export {
   create,
-  
+  show,
 }
