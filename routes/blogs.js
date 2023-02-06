@@ -11,6 +11,7 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, blogsCtrl.create)
 router.get('/', checkAuth, blogsCtrl.index)
+router.get('/:id', checkAuth, blogsCtrl.show)
 
 
 
