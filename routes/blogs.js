@@ -12,6 +12,7 @@ router.use(decodeUserFromToken)
 router.post('/', checkAuth, blogsCtrl.create)
 router.get('/', checkAuth, blogsCtrl.index)
 router.get('/:id', checkAuth, blogsCtrl.show)
+router.put('/:id', checkAuth, blogsCtrl.update)
 
 
 
