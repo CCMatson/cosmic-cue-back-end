@@ -29,8 +29,46 @@ const index = async (req, res) => {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id)
+      .populate('owner')
+    res.status(200).json(blog)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
+const update = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    ).populate('owner')
+    res.status(200).json(blog)
+  }  catch (error) {
+    res.status(500).json(error)
+  }
+}
+
+const deleteBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndDelete(req.params.id)
+    const profile = await Profile.findById(req.user.profile)
+    profile.blogs.remove({ _id: req.params.id })
+    await profile.save()
+    res.status(200).json(blog)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
-  index
+  index,
+  show,
+  update,
+  deleteBlog as delete
 }
 
