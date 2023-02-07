@@ -19,7 +19,7 @@ try {
 
 const index = async (req, res) => {
   try {
-    const fortunes = await Fortune.findById({})
+    const fortunes = await Fortune.find({})
       .populate('owner')
       .sort({ createAt : 'desc' })
     res.status(200).json(fortunes)
