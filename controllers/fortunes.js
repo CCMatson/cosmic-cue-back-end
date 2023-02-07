@@ -3,7 +3,7 @@ import { Fortune } from "../models/fortune.js"
 
 const create = async (req, res) => {
 try {
-  req.body.owner = req.user.Profile
+  req.body.owner = req.user.profile
   const fortune = await Fortune.create(req.body)
   const profile = await Profile.findByIdAndUpdate(req.user.profile,
     { $push: { fortunes: fortune }},
