@@ -10,8 +10,11 @@ const fortuneSchema = new Schema({
   luckyNumber: {
     type: Number,
     required: true,
-  } ,
-  owner: {type: Schema.Types.ObjectId, ref: 'Profile'},
+  },
+  owner: {
+    type: Schema.Types.ObjectId, 
+    ref: 'Profile'
+  },
   category: {
     type: String,
     required: true,

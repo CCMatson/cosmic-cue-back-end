@@ -7,7 +7,10 @@ const blogSchema = new Schema({
     type: String,
     required: true,
   },
-  owner: {type: Schema.Types.ObjectId, ref: 'Profile'},
+  owner: {
+    type: Schema.Types.ObjectId, 
+    ref: 'Profile'
+  },
 },{
   timestamps: true,
 })
