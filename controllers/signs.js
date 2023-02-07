@@ -33,8 +33,18 @@ const update = async (req, res) => {
   }
 }
 
+const deleteSign = async (req, res) => {
+  try {
+    const sign = await Sign.findByIdAndDelete(req.params.id)
+    res.status(200).json(sign)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   show,
   update,
+  deleteSign as delete
 }
