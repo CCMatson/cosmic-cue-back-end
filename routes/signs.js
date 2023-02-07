@@ -12,6 +12,7 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, signsCtrl.create)
 router.get('/:id', checkAuth, signsCtrl.show)
+router.put('/:id',checkAuth, signsCtrl.update)
 
 
 

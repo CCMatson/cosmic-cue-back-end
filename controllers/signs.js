@@ -20,7 +20,21 @@ const show = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  try {
+    const sign = await Sign.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true}
+    )
+  res.status(200).json(sign)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   show,
+  update,
 }
