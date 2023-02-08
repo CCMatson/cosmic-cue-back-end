@@ -7,7 +7,7 @@ const blogSchema = new Schema({
     type: String,
     required: true,
   },
-  owner: {
+  author: {
     type: Schema.Types.ObjectId, 
     ref: 'Profile'
   },
