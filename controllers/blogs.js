@@ -1,5 +1,5 @@
-import { Profile } from "../models/profile.js"
-import { Blog } from "../models/blog.js"
+import { Profile } from ''../models/profile.js'
+import { Blog } from ''../models/blog.js'
 
 const create = async (req, res) => {
   try {
@@ -33,7 +33,6 @@ const show = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
       .populate('author')
-      console.log("BACK END MESSAGE!!!", blog)
     res.status(200).json(blog)
   } catch (error) {
     res.status(500).json(error)
