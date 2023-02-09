@@ -33,6 +33,7 @@ const show = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
       .populate('author')
+      console.log("BACK END MESSAGE!!!", blog)
     res.status(200).json(blog)
   } catch (error) {
     res.status(500).json(error)
