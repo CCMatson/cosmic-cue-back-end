@@ -1,5 +1,5 @@
-import { Profile } from "../models/profile.js"
-import { Blog } from "../models/blog.js"
+import { Profile } from ''../models/profile.js'
+import { Blog } from ''../models/blog.js'
 
 const create = async (req, res) => {
   try {
@@ -21,7 +21,7 @@ const create = async (req, res) => {
 const index = async (req, res) => {
   try {
     const blogs = await Blog.find({})
-      .populate('owner')
+      .populate('author')
       .sort({ createAt : 'desc' })
     res.status(200).json(blogs)
   } catch (error) {
@@ -32,7 +32,7 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
-      .populate('owner')
+      .populate('author')
     res.status(200).json(blog)
   } catch (error) {
     res.status(500).json(error)
@@ -45,7 +45,7 @@ const update = async (req, res) => {
       req.params.id,
       req.body,
       { new: true }
-    ).populate('owner')
+    ).populate('author')
     res.status(200).json(blog)
   }  catch (error) {
     res.status(500).json(error)
