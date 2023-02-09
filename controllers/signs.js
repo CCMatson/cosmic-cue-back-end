@@ -20,6 +20,16 @@ const show = async (req, res) => {
   }
 }
 
+const index = async (req, res) => {
+  try {
+    const signs = await Sign.find({})
+      .sort({ createAt : 'desc' })
+    res.status(200).json(signs)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 const update = async (req, res) => {
   try {
     const sign = await Sign.findByIdAndUpdate(
@@ -44,6 +54,7 @@ const deleteSign = async (req, res) => {
 
 export {
   create,
+  index,
   show,
   update,
   deleteSign as delete
